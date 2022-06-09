@@ -10,6 +10,7 @@ import (
 type RequestPayload struct {
 	Action string      `json:"action"`
 	Auth   AuthPayload `json:"auth,omitempty"`
+	Log    LogPayload  `json:"log,omitempty"`
 }
 
 type AuthPayload struct {
@@ -44,6 +45,8 @@ func (app *Config) HandleSubmission(w http.ResponseWriter, r *http.Request) {
 	switch requestPayload.Action {
 	case "auth":
 		app.authenticate(w, requestPayload.Auth)
+	case "log":
+		app.logItem(w, requestPayload.Log)
 	default:
 		app.errorJSON(w, errors.New("unknown action"))
 	}
