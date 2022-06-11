@@ -4,6 +4,7 @@
 ### Technologies used:
 * Golang
 * Docker
+* RabbitMQ
 * PostgreSQL
 * MongoDB
 
